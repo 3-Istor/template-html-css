@@ -1,0 +1,25 @@
+# deploy/values.yaml
+replicaCount: 1
+
+image:
+  repository: ghcr.io/3-istor/template-html-css
+  tag: "latest"
+
+service:
+  enabled: true
+  type: ClusterIP
+  ports:
+    - name: http
+      port: 80
+      targetPort: 80
+
+secrets:
+  enabled: false # Static website doesn't require Vault secrets
+
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    cpu: 200m
+    memory: 128Mi
