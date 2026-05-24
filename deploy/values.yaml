@@ -16,6 +16,9 @@ service:
 secrets:
   enabled: false # Static website doesn't require Vault secrets
 
+imagePullSecrets:
+  - name: app-registry
+
 resources:
   requests:
     cpu: 50m
