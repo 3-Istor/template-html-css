@@ -1,6 +1,31 @@
-# HTML / CSS Template
+# template-html-css
 
-Template d'application web statique en HTML5 et CSS pur. Il sert de base propre pour créer rapidement une landing page, une maquette simple ou une page de présentation sans framework ni complexité inutile. La structure est volontairement minimale pour rester facile à comprendre, à modifier et à servir dans n'importe quel environnement.
+## Rôle
+
+Modèle de dépôt applicatif statique : site HTML/CSS servi par Nginx, accompagné d’une CI Docker et de valeurs de déploiement Kubernetes.
+
+## Technologies
+
+HTML5, CSS, Nginx Alpine, Docker, YAML Helm et GitHub Actions.
+
+## Entrées
+
+| Origine / destinataire | Contenu et transmission |
+| --- | --- |
+| CMP / app-templates | Sélection comme template GitHub ; `k3s-gitops-app` configure `deploy/values.yaml` dans la copie applicative. |
+| Développeurs | Pages, styles et contenu du site. |
+
+## Sorties et consommateurs
+
+| Origine / destinataire | Contenu et transmission |
+| --- | --- |
+| Dépôts applicatifs / développeurs | Site, Dockerfile, CI et valeurs de déploiement copiés lors de la création GitHub. |
+| GHCR / cluster cible | Image `<owner>/<repo>` contenant le site servi par Nginx. |
+| K3s / Argo CD / infra-templates | `deploy/values.yaml` de la copie applicative, consommé avec le chart générique. |
+
+## Documentation CNP
+
+[Fiche `template-html-css` et workflows inter-repo](https://github.com/3-Istor/cnp-docs/blob/main/docs/04-templates/00-github-repositories-landscape.md#template-html-css).
 
 ## Démarrage rapide
 
