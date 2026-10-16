@@ -3,6 +3,8 @@ name: CI Pipeline
 on:
   push:
     branches: [ "**" ]
+    # A vX.Y.Z tag publishes image X.Y.Z, which the platform rolls out.
+    tags: [ "v*.*.*" ]
     paths-ignore:
       - "deploy/**"
   pull_request:
@@ -54,6 +56,7 @@ jobs:
             type=ref,event=branch
             type=ref,event=pr
             type=sha,prefix=sha-
+            type=semver,pattern={{version}}
             type=raw,value=latest,enable={{is_default_branch}}
 
       - name: Build and push Docker image
