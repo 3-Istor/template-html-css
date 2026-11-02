@@ -1,11 +1,15 @@
+# New versions wait 7 days. The template takes them daily, so an app created
+# from it starts with no update PR.
 version: 2
 updates:
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "weekly"
-      day: "monday"
-      time: "09:00"
+      interval: "daily"
+      time: "05:00"
+      timezone: "Europe/Paris"
+    cooldown:
+      default-days: 7
     open-pull-requests-limit: 5
     commit-message:
       prefix: "chore(ci)"
@@ -17,9 +21,11 @@ updates:
   - package-ecosystem: "docker"
     directory: "/"
     schedule:
-      interval: "weekly"
-      day: "monday"
-      time: "09:00"
+      interval: "daily"
+      time: "05:00"
+      timezone: "Europe/Paris"
+    cooldown:
+      default-days: 7
     open-pull-requests-limit: 5
     commit-message:
       prefix: "chore(docker)"
