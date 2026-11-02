@@ -1,4 +1,4 @@
-FROM nginxinc/nginx-unprivileged:1.31.6-alpine
+FROM nginxinc/nginx-unprivileged:1.31.7-alpine
 
 COPY index.html /usr/share/nginx/html/index.html
 COPY styles /usr/share/nginx/html/styles
