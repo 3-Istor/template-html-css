@@ -11,9 +11,12 @@ on:
 permissions:
   contents: read
 
+# Scans of the template itself. A generated app replaces this file with
+# app-templates' security.yml, after one run on its first commit.
 jobs:
   trivy:
     runs-on: ubuntu-latest
+    if: github.repository == '3-Istor/template-html-css'
     permissions:
       contents: read
       security-events: write
