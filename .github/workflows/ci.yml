@@ -23,7 +23,7 @@ env:
 
 jobs:
   static-check:
-    runs-on: ubuntu-latest
+    runs-on: ${{ fromJSON(vars.CNP_CI_RUNS_ON || '["self-hosted","Linux","X64"]') }}
     steps:
       - uses: actions/checkout@v7
       
@@ -35,7 +35,7 @@ jobs:
           test -f README.md
 
   docker-build:
-    runs-on: ubuntu-latest
+    runs-on: ${{ fromJSON(vars.CNP_CI_RUNS_ON || '["self-hosted","Linux","X64"]') }}
     needs: static-check 
     steps:
       - name: Checkout repository
@@ -86,7 +86,7 @@ jobs:
   # Merged by the workflow once the image builds: GitHub auto-merge would need a
   # repo setting and branch protection that generated repos do not have.
   dependabot-merge:
-    runs-on: ubuntu-latest
+    runs-on: ${{ fromJSON(vars.CNP_CI_RUNS_ON || '["self-hosted","Linux","X64"]') }}
     needs: [static-check, docker-build]
     if: github.event_name == 'pull_request' && github.actor == 'dependabot[bot]'
     permissions:
